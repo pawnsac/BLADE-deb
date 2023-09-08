@@ -5,7 +5,7 @@ Blade uses clang under the hood to build a statement tree and performs deblaotin
 
 ## Instructions for Target Program
 
-Your program must be present in the **target-program** folder. It must contain a target c file and a test oracle. Each oracle file (i-e oracle.sh) must be returning 0 on a successful run. The MAX_UPWARD_PROCESSESS and MAX_DOWNWARD_PROCESSESS denote the parallel processing allocations given to Blade's upward and downwards iterators.
+Your program must be present in the **target-program** folder present inside the *src* folder. It must contain a target c file and a test oracle. Each oracle file (i-e oracle.sh) must be returning 0 on a successful run. The MAX_UPWARD_PROCESSESS and MAX_DOWNWARD_PROCESSESS denote the parallel processing allocations given to Blade's upward and downwards iterators.
 
 Inside the *src* folder, run:
 
@@ -13,7 +13,8 @@ Inside the *src* folder, run:
 
 ## Test Programs
 
-To run Blade on the two test programs attached, use the following command inside the *src* folder:
+To run Blade on the two test programs attached, use the following commands
+ inside the *src* folder:
 
     make -f test.mk test-1
     make -f test.mk test-2
