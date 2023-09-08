@@ -26,6 +26,7 @@ def main(file_name, test_command, n_max, back_max):
     f_n = os.path.join("target-program", file_name)
     test_oracle_file=os.path.join("target-program", test_command)
     os.system(f'chmod +x {test_oracle_file}') ## setting executable permission for the test oracle
+    os.system(f'bash preprocess_cfile.sh {f_n}')  ## preprocess cfile for statement tree builder
 
     rm_dir()
     copy_target_program()

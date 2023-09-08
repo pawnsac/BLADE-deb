@@ -29,6 +29,7 @@ Additional linux requirements:
 
 - clang-14
 - clang-format
+- astyle
 ## Prorotype Limits
 - Works on single c file programs for now.
 - Only C99 code tested so far.
