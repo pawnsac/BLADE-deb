@@ -3,11 +3,11 @@ import shutil
 import sys
 from pathlib import Path
 
-def is_valid_path(path):
+def get_file_name(path):
     if not Path(path).exists():
         print(f"Input path: '{path}' not valid")
         sys.exit(1)
-    return path
+    return Path(path).name
 
 def copy_target_program():
     src_dir = 'target-program'

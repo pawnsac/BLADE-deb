@@ -4,9 +4,10 @@ import time
 import argparse
 import sys
 import os
-from make_dir_duplicates import copy_dir, rm_dir, copy_target_program, is_valid_path
+from make_dir_duplicates import copy_dir, rm_dir, copy_target_program, get_file_name
 from context_builder import parse_container
 from reduction import Reduction
+from process import run_test_case
 from writer import write
 
 
@@ -53,20 +54,28 @@ def main():
 
     # parsing command line args
     args = cmd_line_invocation()
-    c_program = (args.path_to_file)
-    test_oracle_file = (args.path_to_test_oracle)
+    c_program_path = args.path_to_file
+    test_oracle_path = args.path_to_test_oracle
     u_processes = args.max_precesses_upwards
     d_processes = args.max_precesses_downwards
 
-    print(c_program, test_oracle_file, u_processes, d_processes)
+    ## checking if programs paths paths exists and getting the base name
+    c_program = get_file_name(c_program_path)
+    test_oracle_file = get_file_name(test_oracle_path)
 
-    c_program_path = is_valid_path(os.path.join("target-program", c_program))
-    test_oracle_path = is_valid_path(
-        os.path.join("target-program", test_oracle_file))
+
     # setting executable permission for the test oracle
     os.system(f'chmod +x {test_oracle_path}')
     # preprocess cfile for statement tree builder
     os.system(f'bash preprocess_cfile.sh {c_program_path}')
+
+    # checking if initial oracle file in the target-program dir
+    # returns 0 (successful run)
+    if not (run_test_case(f'bash {test_oracle_file}', 'target-program') == 0 ):
+        print("Oracle test script execution failed.")
+        sys.exit(1)
+
+    print(f"Input C program: {c_program} |", f"Oracle test file: {test_oracle_file}")
 
     # processing dirs for debloating process
     rm_dir()

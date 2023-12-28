@@ -9,5 +9,5 @@ def run_test_case(input_cmd, cwd):
         stdout, stderr = process.communicate()
         exit_code = process.wait()
         return exit_code
-    except:
+    except Exception as e:
         return 1

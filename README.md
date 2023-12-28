@@ -9,7 +9,7 @@ Your program must be present in the **src/target-program** folder. It must conta
 
 Inside the *src* folder, run:
 
-    python3 blade.py -p [target_file.c] -t [oracle_file] -u [MAX_UPWARD_PROCESSESS] -d [MAX_DOWNWARD_PROCESSESS]
+    python3 blade.py -p [target-program/target_file.c] -t [target-program/oracle_file] -u [MAX_UPWARD_PROCESSESS] -d [MAX_DOWNWARD_PROCESSESS]
 
 ## Test Programs
 
